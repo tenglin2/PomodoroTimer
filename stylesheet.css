@@ -1,0 +1,37 @@
+html{
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+.page{
+  position: absolute;
+  top: 0;
+  height: 95%;
+  width: 100%;
+  background-color: pink;
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+  height: 5%;
+  width: 100%;
+  background-color: lightblue;
+}
+
+.title_container{
+  position: relative;
+  margin: 10px auto;
+  height: 50px;
+  width: 300px;
+  background-color: lightgreen;
+}
+#title{
+  font-family: monospace;
+  font-size: 32px;
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+}
