@@ -41,5 +41,27 @@ longButton.addEventListener("click", (e) => {
   }
 });
 
-var hello = document.getElementById("hello");
-hello.textContent = "Mongoose";
+// var hello = document.getElementById("hello");
+// hello.textContent = "Mongoose";
+var newTime;
+
+var editButton = document.getElementById("edit");
+editButton.addEventListener("click", (e) => {
+  newTime = prompt("Please enter a new time in format xx:xx");
+  switch (currentTime){
+    case "short":
+      shortTime = newTime;
+      timerclock.textContent = shortTime;
+      break;
+    case "work":
+      workTime = newTime;
+      timerclock.textContent = workTime;
+      break;
+    case "long":
+      longTime = newTime;
+      timerclock.textContent = longTime;
+      break;
+    default:
+      console.log("Something went wrong!");
+  }
+})
