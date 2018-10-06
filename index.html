@@ -10,29 +10,35 @@
   <!-- Add a Google Font link here -->
 </head>
 <body>
+
   <div class="page">
     <div class="frame">
-
+      <p id="hello">
+        Hello World
+      </p>
       <div class="title_container">
         <p id="title">Pomodoro Timer</p>
       </div>
 
       <div class="presets">
         <div class="select_container">
-          <button type="button" id="Short_Break">Short Break</button>
-          <button type="button" id="Work">Work</button>
-          <button type="button" id="Long_Break">Long Break</button>
+          <button type="button" id="short">Short</button>
+          <button type="button" id="work">Work</button>
+          <button type="button" id="long">Long</button>
         </div>
       </div>
 
       <div class="timer_container">
-        <p id="timer_count">23:59</p>
+        <p id="timerclock"></p>
       </div>
 
       <div class="toolbar_container">
-        <button type="button" id="Start_Stop">Start</button>
-        <button type="button" id="Reset">Reset</button>
-        <button type="button" id="Edit">Edit</button>
+        <div class="buttons_container">
+          <button type="button" id="startstop">Start</button>
+          <button type="button" id="reset">Reset</button>
+          <button type="button" id="edit">Edit</button>
+        </div>
+
       </div>
 
 
@@ -42,5 +48,7 @@
   <div class="footer">
     <a href="https://github.com/tenglin2/PomodoroTimer" target="_blank">Source Code Link</a>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

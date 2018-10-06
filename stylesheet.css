@@ -32,9 +32,13 @@ body{
 #title{
   font-family: monospace;
   font-size: 32px;
+  font-weight: 700;
   color: white;
   text-align: center;
   padding-top: 10px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 
 .presets{
@@ -44,6 +48,9 @@ body{
   background-color: orange;
   border-radius: 20px;
 }
+.select_container{
+  text-align: center;
+}
 .presets button{
   display: inline-block;
   margin: 0 20px;
@@ -52,7 +59,7 @@ body{
   height: 70px;
   width: 160px;
   font-family: monospace;
-  font-size: 16px;
+  font-size: 32px;
   font-weight: 700;
   background-color: lightblue;
   border-radius: 15px;
@@ -66,11 +73,14 @@ body{
   background-color: beige;
   border-radius: 20px;
 }
-#timer_count{
+#timerclock{
   font-size: 80px;
   text-align: center;
   position: relative;
   top: 60px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 
 .toolbar_container{
@@ -80,6 +90,10 @@ body{
   height: 100px;
   width: 80%;
   background-color: coral;
+  border-radius: 15px;
+}
+.buttons_container{
+  text-align: center;
 }
 .toolbar_container button{
   display: inline-block;
@@ -90,8 +104,11 @@ body{
   font-size: 32px;
   position: relative;
   top: 15px;
-  left: 15px;
   margin: auto 20px;
+  border: 3px solid black;
+  border-radius: 10px;
+  color: black;
+  font-weight: 700;
 }
 
 
@@ -104,4 +121,7 @@ body{
   color: white;
   font-weight: 800;
   font-size: 16px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
