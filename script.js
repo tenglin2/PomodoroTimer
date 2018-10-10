@@ -1,6 +1,6 @@
 // const shortButton = document.getElementById("short");
 // shortButton.addEventListener("click", (e) => {
-//   shortButton.textContent = "Jump";
+//   shortButton.innerHTML = "Jump";
 //   shortButton.style.backgroundColor = "yellow";
 // });
 var shortTime = "10:00";
@@ -16,7 +16,7 @@ var currentTime = "work";
 //   timerClock.style.backgroundColor = "yellow";
 // });
 var timerClock = document.querySelector("#timerClock");
-timerClock.textContent = workTime;
+timerClock.innerHTML = workTime;
 
 var shortButton = document.getElementById("short");
 var workButton = document.getElementById("work");
@@ -26,7 +26,7 @@ workButton.style.backgroundColor = "lightgreen";
 
 shortButton.addEventListener("click", (e) => {
   if (currentTime !== "short"){
-    timerClock.textContent = shortTime;
+    timerClock.innerHTML = shortTime;
     currentTime = "short";
     realTime = shortTime;
     shortButton.style.backgroundColor = "lightgreen";
@@ -37,7 +37,7 @@ shortButton.addEventListener("click", (e) => {
 });
 workButton.addEventListener("click", (e) => {
   if (currentTime !== "work"){
-    timerClock.textContent = workTime;
+    timerClock.innerHTML = workTime;
     currentTime = "work";
     realTime = workTime;
     workButton.style.backgroundColor = "lightgreen";
@@ -48,7 +48,7 @@ workButton.addEventListener("click", (e) => {
 });
 longButton.addEventListener("click", (e) => {
   if (currentTime !== "long"){
-    timerClock.textContent = longTime;
+    timerClock.innerHTML = longTime;
     currentTime = "long";
     realTime = longTime;
     longButton.style.backgroundColor = "lightgreen";
@@ -58,7 +58,7 @@ longButton.addEventListener("click", (e) => {
 });
 
 // var hello = document.getElementById("hello");
-// hello.textContent = "Mongoose";
+// hello.innerHTML = "Mongoose";
 var newTime;
 
 function editButtonListener(){
@@ -76,15 +76,18 @@ function editButtonListener(){
     switch (currentTime){
       case "short":
         shortTime = newTime;
-        timerClock.textContent = shortTime;
+        realTime = newTime;
+        timerClock.innerHTML = shortTime;
         break;
       case "work":
         workTime = newTime;
-        timerClock.textContent = workTime;
+        realTime = newTime;
+        timerClock.innerHTML = workTime;
         break;
       case "long":
         longTime = newTime;
-        timerClock.textContent = longTime;
+        realTime = newTime;
+        timerClock.innerHTML = longTime;
         break;
       default:
         console.log("Something went wrong!");
@@ -97,19 +100,21 @@ var editButton = document.getElementById("edit");
 
 var actButton = document.getElementById("act");
 
+var myInterval = -1;
+
 function actButtonListener(){
   actButton.addEventListener("click", function(event){
-    var myInterval = -1;
-    if (myInterval == -1) {
+    // myInterval set to -1 to represent the condition where the timer is paused or not running.
+
+    if (myInterval === -1) {
       actButton.innerHTML = "Pause";
       myInterval = setInterval(function(){
-        console.log(realTime);
-        var minutes, seconds = realTime.split(":");
-        minutes = parseInt(minutes);
-        seconds = parseInt(seconds);
-        console.log(minutes);
-        console.log(typeof minutes)
-        if(minutes === 0 && seconds < 0){
+        var realTimeUnits = realTime.split(":");
+        var minutes = parseInt(realTimeUnits[0]);
+        var seconds = parseInt(realTimeUnits[1]);
+
+        // Condition if timer runs out, we stop the interval and reset the time to whatever it was originally set to. Should implement an alarm of some sort.
+        if(minutes === 0 && seconds === 0){
           actButton.innerHTML = "Start";
           clearInterval(myInterval);
           myInterval = -1;
@@ -127,29 +132,25 @@ function actButtonListener(){
               default:
                 console.log("Something went wrong here.");
           }
-          timerClock.innerHTML
+          // timerClock.innerHTML = realTime;
+          alert("Timer is up!");
+        }else{
+          // Case just to run. Normal time countdown.
+          console.log("Timer Runs...")
+          if (seconds > 0){
+            seconds--;
+          }else{
+            minutes--;
+            seconds = 59;
+          }
+
+          realTime = `${minutes < 10 ? 0 : ""}${minutes}:${seconds < 10 ? 0 : ""}${seconds}`;
         }
-        // if (realTime < 0){
-        //   actButton.innerHTML = "Start";
-        //   clearInterval(myInterval);
-        //   myInterval = -1;
-        //   switch (currentTime){
-        //     case "short":
-        //       realTime = shortTime;
-        //       break;
-        //     case "work":
-        //       realTime = workTime;
-        //       break;
-        //     case "long":
-        //       realTime = longTime;
-        //       break;
-        //     default:
-        //       console.log("Something went wrong here.");
-        //   }
-        // }
         timerClock.innerHTML = realTime;
+
       }, 1000);
     }else{
+      console.log("Trying to pause");
       actButton.innerHTML = "Start";
       clearInterval(myInterval);
       myInterval = -1;
@@ -158,63 +159,6 @@ function actButtonListener(){
 }
 
 
-// var myInterval = -1;
-
-// var myInterval = -1;
-// var actButton = document.getElementById("act");
-// actButton.addEventListener("click", (e) => {
-//   console.log(myInterval)
-//   if (myInterval === -1){
-//     myInterval = setInterval(startTimer, 1000);
-//   }else{
-//     clearInterval(myInterval);
-//     myInterval = -1;
-//   }
-// })
-//
-// function startTimer(){
-//   console.log("runs")
-//   realTime--;
-//   if (realTime < 0){
-//     realTime == 45;
-//   }
-//   timerClock.textContent = realTime;
-// }
-//
-//
-// function startTimer(){
-//   actButton.addEventListener("click", (e) => {
-//     // if (myInterval === -1){
-//       // myInterval = setInterval(changeColor(), 1000);
-//     // }else{
-//     //   clearInterval(myInterval);
-//     // }
-//
-//     var myVar = setInterval(changeColor, 1000);
-//   });
-// }
-//
-//
-// function changeColor(){
-//   // if (startButton.style.backgroundColor === "lightblue"){
-//   //   startButton.style.backgroundColor = "lightgreen";
-//   // }else{
-//   //   startButton.style.backgroundColor = "lightblue";
-//   // }
-//   // alert("hello");
-//
-//   // var time = parseInt(timerClock.textContent) - 1;
-//   // timerClock.textContent = time;
-//
-//   actButton.style.Background = actButton.style.backgroundColor == "lightblue" ? "pink" : "lightblue";
-// }
-//
-// function stopColor(){
-//   actButton.addEventListener()
-//   clearInterval(myVar);
-// }
-//
-// startTimer();
 
 editButtonListener();
 actButtonListener();
