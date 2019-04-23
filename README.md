@@ -3,6 +3,8 @@
 ### Overview
 This is a simple Pomodoro Timer project coded in JavaScript. I wanted to learn how JavaScript can handle timed events to I tested it with this implementation.
 
+> To view the page in browser, please click [here](https://tenglin2.github.io/PomodoroTimer/).
+
 ### Features
 - Dynamic timing selections
 - Responsive start, reset, and edit buttons
